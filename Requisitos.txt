@@ -1,0 +1,134 @@
+Projeto de Programa de Cadastro de Clientes com Informações Fiscais e Assessoria
+
+Este projeto detalha a criação de um programa computacional para o cadastro e gestão de clientes, com foco especial na organização de informações fiscais e de assessoria. O objetivo é otimizar o acompanhamento e a comunicação de datas importantes, prazos e documentos relacionados à contabilidade e consultoria.
+
+1. Objetivo Geral
+
+Desenvolver um sistema intuitivo e eficiente para o cadastro e gerenciamento de clientes, centralizando dados cadastrais, informações fiscais, datas de vencimento de impostos e obrigações, e histórico de assessorias prestadas, facilitando a organização e o acompanhamento de prazos.
+
+2. Módulos Principais
+2.1. Módulo de Cadastro de Clientes
+
+Campos de Dados Pessoais/Empresariais:
+
+Nome Completo / Razão Social
+CPF / CNPJ
+Endereço Completo (Rua, Número, Bairro, Cidade, Estado, CEP)
+Telefone(s) de Contato
+E-mail(s)
+Data de Nascimento / Data de Constituição
+Observações Gerais
+Tipo de Cliente: (Ex: Pessoa Física, MEI, ME, LTDA, EPP, S/A, etc.)
+Status do Cliente: (Ativo, Inativo, Suspenso)
+
+2.2. Módulo de Informações Fiscais
+Regime Tributário: (Ex: Simples Nacional, Lucro Presumido, Lucro Real)
+Inscrição Estadual / Municipal
+Dados Bancários do Cliente: (Opcional, para repasses ou controle financeiro)
+Documentos Fiscais:
+Upload de arquivos (Contrato Social, Alvará, Certificados, etc.)
+Datas de validade de certidões (Ex: CNDs)
+Histórico de Débitos: (Registro manual ou integração futura para controle de pendências)
+
+2.3. Módulo de Controle de Datas e Obrigações Fiscais
+Cadastro de Obrigações:
+Nome da Obrigação (Ex: DAS, ICMS, IRPJ, DCTF, eSocial, etc.)
+Frequência (Mensal, Trimestral, Anual, Pontual)
+Data de Vencimento: (Preenchimento manual ou automático baseado na frequência)
+Alertas e Notificações: (Configuráveis, com antecedência de dias)
+Associação de Obrigações a Clientes: Cada obrigação pode ser vinculada a clientes específicos.
+Status da Obrigação: (Pendente, Concluída, Em Andamento)
+Histórico de Entregas: Registro de datas de cumprimento das obrigações.
+
+2.4. Módulo de Assessoria e Atendimento
+Registro de Interações:
+Data e Hora do Atendimento
+Tipo de Atendimento (Telefone, E-mail, Reunião, Presencial)
+Assunto
+Descrição Detalhada
+Responsável pelo Atendimento (usuário do sistema)
+Anexos: Possibilidade de anexar documentos ou prints relacionados ao atendimento.
+Tarefas Relacionadas: Criação de tarefas a partir de um atendimento, com data limite e responsável.
+
+3. Funcionalidades Adicionais
+Pesquisa Avançada: Filtragem de clientes por diversos critérios (nome, CNPJ, regime tributário, etc.).
+Relatórios Personalizados:
+Clientes com obrigações próximas.
+Clientes por regime tributário.
+Histórico de atendimentos por cliente/período.
+Gestão de Usuários:
+Diferentes níveis de acesso (Administrador, Usuário Padrão).
+Controle de permissões para cada módulo.
+Lixeira/Histórico de Exclusões: Para recuperação de dados acidentalmente apagados.
+Auditoria de Ações: Registro de quem fez o quê no sistema e quando.
+4. Tecnologias Sugeridas
+Backend: Python (Django/Flask) ou Node.js (Express)
+Frontend: React, Angular ou Vue.js
+Banco de Dados: PostgreSQL ou MySQL (para dados relacionais), ou MongoDB (para dados não relacionais, se houver necessidade específica)
+Servidor: AWS, Google Cloud, Azure ou Heroku
+Versionamento: Git/GitHub
+5. Estrutura do Banco de Dados (Exemplo Simplificado)
+Tabela: Clientes
+- id (PK)
+- nome_razao_social
+- cpf_cnpj
+- endereco
+- telefone
+- email
+- data_nascimento_constituicao
+- tipo_cliente
+- status_cliente
+- observacoes
+ 
+Tabela: InformacoesFiscais
+- id (PK)
+- cliente_id (FK para Clientes)
+- regime_tributario
+- inscricao_estadual
+- inscricao_municipal
+- dados_bancarios (opcional)
+ 
+Tabela: DocumentosCliente
+- id (PK)
+- cliente_id (FK para Clientes)
+- nome_documento
+- caminho_arquivo
+- data_validade (se aplicável)
+ 
+Tabela: ObrigacoesFiscais
+- id (PK)
+- nome_obrigacao
+- frequencia
+- data_vencimento_padrao
+- descricao
+ 
+Tabela: ClienteObrigacao
+- id (PK)
+- cliente_id (FK para Clientes)
+- obrigacao_id (FK para ObrigacoesFiscais)
+- data_vencimento_real
+- status_obrigacao
+- data_cumprimento
+ 
+Tabela: Atendimentos
+- id (PK)
+- cliente_id (FK para Clientes)
+- data_hora_atendimento
+- tipo_atendimento
+- assunto
+- descricao
+- usuario_responsavel_id (FK para Tabela Usuarios)
+ 
+Tabela: Usuarios
+- id (PK)
+- nome_usuario
+- email
+- senha_hash
+- nivel_acesso
+6. Próximos Passos
+Levantamento Detalhado: Aprofundar os requisitos com os futuros usuários, mapeando todos os campos e fluxos de trabalho.
+Design de Interface (UI/UX): Criar wireframes e protótipos para a interface do usuário.
+Desenvolvimento: Iniciar a codificação dos módulos.
+Testes: Realizar testes unitários, de integração e de usuário para garantir a qualidade.
+Implantação: Colocar o sistema em ambiente de produção.
+Manutenção e Evolução: Atualizações e novas funcionalidades conforme a necessidade

@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 34 197 94;
+  --primary-foreground: 255 255 255;
+  --secondary: 251 191 36;
+  --secondary-foreground: 0 0 0;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --muted: 156 163 175;
+  --muted-foreground: 75 85 99;
+  --accent: 59 130 246;
+  --accent-foreground: 255 255 255;
+  --popover: 255 255 255;
+  --popover-foreground: 0 0 0;
+  --card: 255 255 255;
+  --card-foreground: 0 0 0;
+  --border: 229 231 235;
+  --input: 229 231 235;
+  --ring: 34 197 94;
+  --background: 255 255 255;
+  --foreground: 0 0 0;
+  --radius: 0.5rem;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  @apply bg-gradient-to-br from-green-50 via-blue-50 to-yellow-50 text-gray-900;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.game-card {
+  @apply bg-white/80 backdrop-blur-sm border-2 border-green-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+}
+
+@media (max-width: 768px) {
+  .game-card {
+    @apply hover:scale-100;
+  }
+}
+
+.progress-bar {
+  @apply bg-gradient-to-r from-green-400 to-blue-500 rounded-full h-2 md:h-3 transition-all duration-500;
+}
+
+.badge {
+  @apply inline-flex items-center px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium;
+}
+
+.badge-gold {
+  @apply bg-gradient-to-r from-yellow-400 to-orange-400 text-white;
+}
+
+.badge-silver {
+  @apply bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800;
+}
+
+.badge-bronze {
+  @apply bg-gradient-to-r from-orange-300 to-red-400 text-white;
+}
+
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent;
+}
+
+.mosquito-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Better touch targets */
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improved scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5);
+}
