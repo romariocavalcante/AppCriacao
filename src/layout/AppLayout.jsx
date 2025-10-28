@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Home, BookOpen, MapPin, Trophy, Bug, Swords, Library, Users, Menu, X } from 'lucide-react';
+import { Shield, Home, BookOpen, Trophy, Bug, Users, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
 import { useContent } from '@/context/ContentContext';
@@ -15,12 +15,9 @@ function AppLayout({ currentView, setCurrentView, children }) {
 
   const navigationItems = [
     { id: 'home', label: labels.home || 'Início', icon: Home },
-    { id: 'quiz', label: labels.quiz || 'Quiz', icon: BookOpen },
-    { id: 'map', label: labels.map || 'Mapa', icon: MapPin },
-    { id: 'achievements', label: labels.achievements || 'Conquistas', icon: Trophy },
-    { id: 'games', label: labels.games || 'Jogos', icon: Swords },
-    { id: 'knowledge', label: labels.knowledge || 'Aprenda+', icon: Library },
-    { id: 'challenges', label: labels.challenges || 'Desafios', icon: Users },
+  { id: 'quiz', label: labels.quiz || 'Quiz', icon: BookOpen },
+  { id: 'achievements', label: labels.achievements || 'Conquistas', icon: Trophy },
+  { id: 'challenges', label: labels.challenges || 'Desafios', icon: Users },
   ];
 
   return (
@@ -155,20 +152,20 @@ function AppLayout({ currentView, setCurrentView, children }) {
         <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
           <div className="text-center space-y-3 md:space-y-4">
             <div className="flex items-center justify-center space-x-2">
-              <Bug className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+              <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
               <span className="text-base md:text-lg font-semibold text-green-800">
-                Juntos contra a dengue em Canaã dos Carajás
+                Juntos na Trilha da Fé
               </span>
             </div>
             <p className="text-sm md:text-base text-gray-600">
-              Aplicativo educativo desenvolvido para conscientização e prevenção da dengue
+              Aplicativo educativo para estudos bíblicos, meditação e prática diária dos ensinamentos.
             </p>
             <div className="flex flex-col md:flex-row justify-center space-y-1 md:space-y-0 md:space-x-6 text-xs md:text-sm text-gray-500">
-              <span>Secretaria de Saúde</span>
+              <span>Igreja Local</span>
               <span className="hidden md:inline">•</span>
-              <span>Secretaria de Educação</span>
+              <span>Grupo de Estudos</span>
               <span className="hidden md:inline">•</span>
-              <span>Prefeitura de Canaã dos Carajás</span>
+              <span>Comunidade</span>
             </div>
           </div>
         </div>

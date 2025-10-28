@@ -4,10 +4,7 @@ import { ContentProvider } from '@/context/ContentContext';
 import AppLayout from '@/layout/AppLayout';
 import HomeView from '@/features/home/HomeView';
 import QuizView from '@/features/quiz/QuizView';
-import MapView from '@/features/map/MapView';
 import AchievementsView from '@/features/achievements/AchievementsView';
-import GamesView from '@/features/games/GamesView';
-import KnowledgeView from '@/features/knowledge/KnowledgeView';
 import ChallengesView from '@/features/challenges/ChallengesView';
 import PWAInstallBanner from '@/components/PWAInstallBanner';
 import { useServiceWorker } from '@/hooks/useServiceWorker';
@@ -22,7 +19,7 @@ function App() {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const viewParam = urlParams.get('view');
-    if (viewParam && ['home', 'quiz', 'map', 'achievements', 'games', 'knowledge', 'challenges', 'admin'].includes(viewParam)) {
+    if (viewParam && ['home', 'quiz', 'achievements', 'challenges', 'admin'].includes(viewParam)) {
       setCurrentView(viewParam);
     }
   }, []);
@@ -84,10 +81,8 @@ function App() {
       <AppLayout currentView={currentView} setCurrentView={setCurrentView}>
         {currentView === 'home' && <HomeView />}
         {currentView === 'quiz' && <QuizView />}
-        {currentView === 'map' && <MapView />}
         {currentView === 'achievements' && <AchievementsView />}
-        {currentView === 'games' && <GamesView />}
-        {currentView === 'knowledge' && <KnowledgeView />}
+  { /* games and knowledge views removed */ }
         {currentView === 'challenges' && <ChallengesView />}
         {currentView === 'admin' && <AdminView />}
       </AppLayout>

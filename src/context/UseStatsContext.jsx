@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { toast } from '@/components/ui/use-toast';
+import { useContent } from '@/context/ContentContext';
 
 const UserStatsContext = createContext();
 
@@ -16,6 +17,8 @@ export const UserStatsProvider = ({ children }) => {
     };
   });
 
+  const { content } = useContent();
+
   const [dailyMissions, setDailyMissions] = useState(() => {
     const saved = localStorage.getItem('dengue-daily-missions');
     const today = new Date().toDateString();
@@ -25,51 +28,69 @@ export const UserStatsProvider = ({ children }) => {
       return savedData.missions;
     }
     
-    return [
-      { id: 1, title: 'Verificar recipientes de água', points: 50, completed: false, icon: 'Droplets' },
-      { id: 2, title: 'Compartilhar dica de prevenção', points: 30, completed: false, icon: 'Users' },
+    return (content && content.dailyMissions) ? content.dailyMissions : [
+      { id: 1, title: 'Ler um estudo bíblico', points: 50, completed: false, icon: 'BookOpen' },
+      { id: 2, title: 'Compartilhar reflexão', points: 30, completed: false, icon: 'Users' },
       { id: 3, title: 'Completar quiz diário', points: 40, completed: false, icon: 'BookOpen' },
-      { id: 4, title: 'Reportar foco suspeito', points: 60, completed: false, icon: 'MapPin' }
+      { id: 4, title: 'Participar do grupo de estudo', points: 60, completed: false, icon: 'Users' }
     ];
   });
 
-  const [quizQuestions] = useState([
+  const [quizQuestions, setQuizQuestions] = useState(() => (content && content.quizQuestions) ? content.quizQuestions : [
     {
       id: 1,
-      question: 'Qual é o principal transmissor da dengue?',
-      options: ['Mosquito Aedes aegypti', 'Mosquito comum', 'Borrachudo', 'Pernilongo'],
+      question: 'Quem conduziu o povo de Israel pela travessia do Mar Vermelho?',
+      options: ['Moisés', 'Josué', 'Abraão', 'Davi'],
       correct: 0,
-      explanation: 'O Aedes aegypti é o mosquito transmissor da dengue, zika e chikungunya.'
+      explanation: 'Moisés liderou a saída do Egito e, pelo poder de Deus, o povo atravessou o Mar Vermelho.'
     },
     {
       id: 2,
-      question: 'Em que tipo de água o Aedes aegypti se reproduz?',
-      options: ['Água suja', 'Água parada e limpa', 'Água corrente', 'Água salgada'],
+      question: 'Quantos dias Jesus jejuou no deserto?',
+      options: ['7 dias', '40 dias', '3 dias', '12 dias'],
       correct: 1,
-      explanation: 'O Aedes aegypti prefere água limpa e parada para depositar seus ovos.'
+      explanation: 'De acordo com os Evangelhos, Jesus jejuou 40 dias no deserto antes de iniciar seu ministério.'
     },
     {
       id: 3,
-      question: 'Qual horário o mosquito da dengue é mais ativo?',
-      options: ['Durante a noite', 'Manhã e final da tarde', 'Meio-dia', 'Madrugada'],
-      correct: 1,
-      explanation: 'O Aedes aegypti é mais ativo nas primeiras horas da manhã e no final da tarde.'
+      question: 'Qual livro contém o "Pai Nosso"?',
+      options: ['Gênesis', 'Salmos', 'Mateus', 'Apocalipse'],
+      correct: 2,
+      explanation: 'O "Pai Nosso" aparece no Evangelho de Mateus (capítulo 6) e também em Lucas (capítulo 11).'
     }
   ]);
 
-  const preventionTips = [
-    { icon: 'Droplets', title: 'Eliminar água parada', description: 'Verifique vasos, pneus e recipientes' },
-    { icon: 'Home', title: 'Manter casa limpa', description: 'Limpe calhas e caixas d\'água regularmente' },
-    { icon: 'Trash2', title: 'Descartar lixo corretamente', description: 'Evite acúmulo de materiais que juntem água' },
-    { icon: 'Flower', title: 'Cuidar do jardim', description: 'Mantenha plantas sem água acumulada' }
-  ];
+  const [preventionTips, setPreventionTips] = useState(() => (content && content.preventionTips) ? content.preventionTips : [
+    { icon: 'BookOpen', title: 'Leitura Diária', description: 'Reserve um tempo diário para ler a Bíblia e meditar nas passagens.' },
+    { icon: 'Users', title: 'Estudo em Grupo', description: 'Participe de um grupo de estudo para trocar reflexões e aprender juntos.' },
+    { icon: 'BookOpen', title: 'Memorize Versículos', description: 'Decore versículos-chave para fortalecer sua fé e lembrar promessas.' },
+    { icon: 'Heart', title: 'Pratique o Amor', description: 'Aplique os ensinamentos bíblicos ajudando o próximo no dia a dia.' },
+    { icon: 'Zap', title: 'Oração Constante', description: 'Mantenha uma vida de oração e comunhão com Deus em todas as ocasiões.' }
+  ]);
 
-  const achievements = [
-    { id: 1, name: 'Primeiro Passo', description: 'Complete sua primeira missão', icon: 'Star', unlocked: userStats.points > 0 },
-    { id: 2, name: 'Estudioso', description: 'Complete 5 quizzes', icon: 'BookOpen', unlocked: userStats.points > 200 },
-    { id: 3, name: 'Guardião', description: 'Alcance nível 5', icon: 'Shield', unlocked: userStats.level >= 5 },
-    { id: 4, name: 'Herói da Prevenção', description: 'Acumule 1000 pontos', icon: 'Trophy', unlocked: userStats.points >= 1000 }
-  ];
+  const [achievements, setAchievements] = useState(() => (content && content.achievements) ?
+    content.achievements.map(a => ({ ...a, unlocked: !!a.unlocked })) :
+    [
+      { id: 1, name: 'Primeiro Versículo', description: 'Leia seu primeiro estudo bíblico', icon: 'BookOpen', unlocked: userStats.points > 0 },
+      { id: 2, name: 'Discípulo', description: 'Complete 5 estudos ou quizzes', icon: 'Users', unlocked: userStats.points > 200 },
+      { id: 3, name: 'Estudioso', description: 'Complete 15 estudos', icon: 'Star', unlocked: userStats.level >= 5 },
+      { id: 4, name: 'Coração Generoso', description: 'Aplique ensinamentos em ações de amor', icon: 'Heart', unlocked: userStats.points >= 1000 }
+    ]);
+
+  // When content changes (edited via admin), update these lists while preserving runtime flags if possible
+  useEffect(() => {
+    if (!content) return;
+    if (content.quizQuestions) setQuizQuestions(content.quizQuestions);
+    if (content.preventionTips) setPreventionTips(content.preventionTips);
+    if (content.achievements) setAchievements(content.achievements.map(a => ({ ...a, unlocked: !!a.unlocked })));
+    if (content.dailyMissions) {
+      // preserve completed flags from existing dailyMissions where ids match
+      setDailyMissions(prev => {
+        const byId = (prev || []).reduce((acc, m) => { acc[m.id] = m; return acc; }, {});
+        return content.dailyMissions.map(m => ({ ...m, completed: byId[m.id] ? !!byId[m.id].completed : !!m.completed }));
+      });
+    }
+  }, [content]);
 
   useEffect(() => {
     localStorage.setItem('dengue-app-stats', JSON.stringify(userStats));

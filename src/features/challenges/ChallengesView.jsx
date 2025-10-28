@@ -1,23 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Shield, Trophy } from 'lucide-react';
+import { Users, BookOpen, Trophy, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 
 const challenges = [
   {
-    title: 'Missão Bairro Limpo',
-    description: 'Organize uma força-tarefa com sua turma para limpar uma área do bairro.',
+    title: 'Estudo Comunitário',
+    description: 'Organize um encontro para estudar uma passagem bíblica com sua turma ou comunidade.',
     points: 500,
-    icon: Shield,
-    teamSize: '5-10 pessoas'
+    icon: BookOpen,
+    teamSize: '5-15 pessoas'
   },
   {
-    title: 'Campeonato de Conhecimento',
-    description: 'Compita contra outras turmas em um super quiz sobre a dengue.',
+    title: 'Atos de Amor',
+    description: 'Realize uma ação prática de ajuda ao próximo inspirada nos ensinamentos bíblicos.',
     points: 300,
-    icon: Trophy,
-    teamSize: 'Toda a turma'
+    icon: Heart,
+    teamSize: 'Indivíduo ou grupo'
   }
 ];
 
@@ -36,8 +36,8 @@ function ChallengesView() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3 md:mb-4">Desafios em Equipe</h2>
-        <p className="text-sm md:text-base text-gray-600">Una-se a seus amigos para missões ainda maiores!</p>
+  <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3 md:mb-4">Desafios Bíblicos</h2>
+  <p className="text-sm md:text-base text-gray-600">Participe de desafios que fortalecem o estudo e a prática dos ensinamentos.</p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -81,12 +81,12 @@ function ChallengesView() {
         transition={{ delay: 0.4 }}
         className="game-card p-4 md:p-6"
       >
-        <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4">Diário da Prevenção</h3>
+        <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4">Diário Espiritual</h3>
         <p className="text-sm md:text-base text-gray-600 mb-3 md:mb-4">
-          Registre aqui as ações de prevenção que você realiza no seu dia a dia. Crie um diário e ganhe pontos extras!
+          Registre reflexões, orações ou ações inspiradas pelos estudos. Use este diário para acompanhar seu crescimento.
         </p>
         <textarea
-          placeholder="Ex: Hoje verifiquei todos os vasos de planta e não encontrei água parada..."
+          placeholder="Ex: Hoje meditei no evangelho de Mateus e compartilhei uma reflexão com o grupo..."
           className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent min-h-[100px] md:min-h-[120px] text-sm md:text-base"
         />
         <Button 

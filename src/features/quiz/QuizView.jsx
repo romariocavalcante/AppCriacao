@@ -57,8 +57,8 @@ function QuizView() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-6 md:mb-8"
       >
-        <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3 md:mb-4">Quiz Educativo</h2>
-        <p className="text-sm md:text-base text-gray-600">Teste seus conhecimentos sobre prevenção da dengue!</p>
+        <h2 className="text-2xl md:text-3xl font-bold gradient-text mb-3 md:mb-4">Quiz Bíblico</h2>
+        <p className="text-sm md:text-base text-gray-600">Teste seus conhecimentos sobre a Bíblia e fortaleça seus estudos.</p>
       </motion.div>
 
       {!currentQuiz && !quizResults && (
@@ -70,9 +70,9 @@ function QuizView() {
           <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
             <BookOpen className="w-10 h-10 md:w-12 md:h-12 text-white" />
           </div>
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4">Pronto para o desafio?</h3>
+          <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4">Pronto para o desafio bíblico?</h3>
           <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
-            Responda {quizQuestions.length} perguntas sobre dengue e ganhe pontos!
+            Responda {quizQuestions.length} perguntas sobre a Bíblia e ganhe pontos!
           </p>
           <Button 
             onClick={startQuiz}
