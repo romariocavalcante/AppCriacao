@@ -1,8 +1,8 @@
 {
-    "name": "guardioes-contra-dengue",
+  "name": "trilha-da-fe",
     "type": "module",
     "version": "1.0.0",
-    "description": "Aplicativo educativo PWA de prevenção da dengue para Canaã dos Carajás",
+  "description": "Trilha da Fé — aplicativo PWA de estudo bíblico, quizzes e desafios espirituais.",
     "private": true,
     "scripts": {
       "dev": "vite",
@@ -58,17 +58,17 @@
       "pwa",
       "react",
       "vite",
-      "dengue",
-      "educação",
-      "saúde",
-      "mobile",
+      "bíblia",
+      "estudos",
+      "cristão",
+      "quiz",
       "offline"
     ],
-    "author": "Equipe de Desenvolvimento - Canaã dos Carajás",
+    "author": "Romário Cavalcante",
     "license": "MIT",
     "repository": {
       "type": "git",
-      "url": "https://github.com/seu-usuario/guardioes-contra-dengue.git"
+      "url": "https://github.com/romariocavalcante/AppCriacao.git"
     },
-    "homepage": "https://guardioes-dengue.vercel.app"
+    "homepage": "https://trilha-da-fe.vercel.app"
   }
