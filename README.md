@@ -99,9 +99,3 @@ README.md
 MIT
 
 ---
-
-Se quiser, posso também:
-
-- Gerar um README mais curto para a página do GitHub;
-- Adicionar um workflow de CI para builds automáticos;
-- Ajustar `package.json` (homepage/repository) para apontar ao seu repo e domínio Vercel.
