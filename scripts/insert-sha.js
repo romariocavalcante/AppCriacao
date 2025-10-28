@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 function getShortSha() {
   try {
@@ -31,6 +32,7 @@ if (!sha) {
   process.exit(0);
 }
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const indexPath = path.resolve(__dirname, '..', 'index.html');
 if (!fs.existsSync(indexPath)) {
   console.warn('index.html not found at', indexPath);

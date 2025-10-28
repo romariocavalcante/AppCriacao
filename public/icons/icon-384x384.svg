@@ -1,0 +1,42 @@
+
+<svg width="384" height="384" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+  
+  <!-- Shield -->
+  <path d="M256 64L384 128v128c0 88.4-71.6 160-160 160S64 344.4 64 256V128L256 64z" 
+        fill="white" opacity="0.9"/>
+  
+  <!-- Mosquito -->
+  <g transform="translate(256, 256) scale(0.6)">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="8" ry="20" fill="#2d3748" transform="rotate(45)"/>
+    
+    <!-- Wings -->
+    <path d="M-15 -10 Q-25 -5 -15 0 Q-25 5 -15 10" stroke="#4a5568" stroke-width="2" fill="none"/>
+    <path d="M15 -10 Q25 -5 15 0 Q25 5 15 10" stroke="#4a5568" stroke-width="2" fill="none"/>
+    
+    <!-- Head -->
+    <circle cx="0" cy="-15" r="6" fill="#2d3748"/>
+    
+    <!-- Eyes -->
+    <circle cx="-2" cy="-17" r="1.5" fill="white"/>
+    <circle cx="2" cy="-17" r="1.5" fill="white"/>
+    
+    <!-- Antennae -->
+    <line x1="-3" y1="-20" x2="-6" y2="-25" stroke="#2d3748" stroke-width="1"/>
+    <line x1="3" y1="-20" x2="6" y2="-25" stroke="#2d3748" stroke-width="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="256" y="420" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">
+    G
+  </text>
+</svg>
