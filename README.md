@@ -32,8 +32,8 @@ O Trilha da Fé é um PWA para apoiar estudos bíblicos individuais e em grupo. 
 Pré-requisitos: Node.js 16+ e npm
 
 ```powershell
-git clone <seu-repositorio>
-cd <seu-repositorio>
+git clone https://github.com/romariocavalcante/AppCriacao.git
+cd AppCriacao
 npm install
 npm run dev
 ```
