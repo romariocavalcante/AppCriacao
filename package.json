@@ -6,7 +6,8 @@
     "private": true,
     "scripts": {
       "dev": "vite",
-      "build": "node scripts/generate-icons.js && vite build",
+  "build": "node scripts/insert-sha.js && node scripts/generate-icons.js && vite build",
+  "insert-sha": "node scripts/insert-sha.js",
       "preview": "vite preview",
       "pwa:icons": "node scripts/generate-icons.js",
       "pwa:test": "npm run build && npx serve dist",
