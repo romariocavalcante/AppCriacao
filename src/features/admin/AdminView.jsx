@@ -236,20 +236,28 @@ function AdminView() {
         </div>
 
         {/* JSON editors for lists (full width) */}
-        {['dailyMissions','quizQuestions','preventionTips','achievements','games','challenges','levels','studyAreas'].map(field => (
-          <div key={field} className="game-card p-4 md:col-span-2">
+        {
+          /* Map display labels to actual content keys used in ContentContext */
+        }
+        {[
+          { label: 'Missões Diárias', key: 'dailyMissions' },
+          { label: 'Quiz', key: 'quizQuestions' },
+          { label: 'Conquistas', key: 'achievements' },
+          { label: 'Desafios', key: 'challenges' }
+        ].map(({ label, key }) => (
+          <div key={key} className="game-card p-4 md:col-span-2">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="font-semibold">{field}</h3>
-              <div className="text-sm text-red-500">{errors[field] && `Erro: ${errors[field]}`}</div>
+              <h3 className="font-semibold">{label}</h3>
+              <div className="text-sm text-red-500">{errors[key] && `Erro: ${errors[key]}`}</div>
             </div>
             <textarea
               className="w-full h-48 p-2 border rounded font-mono text-sm"
-              value={jsonEditors[field] || ''}
-              onChange={(e) => setJsonEditors(prev => ({ ...prev, [field]: e.target.value }))}
+              value={jsonEditors[key] || ''}
+              onChange={(e) => setJsonEditors(prev => ({ ...prev, [key]: e.target.value }))}
             />
             <div className="mt-2 flex space-x-2">
-              <Button onClick={() => handleApplyJSON(field)}>Aplicar JSON</Button>
-              <Button variant="outline" onClick={() => setJsonEditors(prev => ({ ...prev, [field]: JSON.stringify(form[field] || [], null, 2) }))}>Recarregar</Button>
+              <Button onClick={() => handleApplyJSON(key)}>Aplicar JSON</Button>
+              <Button variant="outline" onClick={() => setJsonEditors(prev => ({ ...prev, [key]: JSON.stringify(form[key] || [], null, 2) }))}>Recarregar</Button>
             </div>
           </div>
         ))}

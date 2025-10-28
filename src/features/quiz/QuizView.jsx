@@ -116,7 +116,7 @@ function QuizView() {
               <Button
                 key={index}
                 variant="outline"
-                className="w-full text-left justify-start p-3 md:p-4 h-auto hover:bg-green-50 hover:border-green-300 text-sm md:text-base"
+                className={"w-full text-left justify-start p-3 md:p-4 h-auto bg-gradient-to-r from-blue-500 to-green-500 text-black hover:text-black hover:from-blue-600 hover:to-green-600 focus:text-black focus:from-blue-600 focus:to-green-600 active:text-black active:from-blue-700 active:to-green-700 text-sm md:text-base"}
                 onClick={() => answerQuestion(index)}
               >
                 <span className="w-6 h-6 md:w-8 md:h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3 text-xs md:text-sm font-semibold flex-shrink-0">

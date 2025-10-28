@@ -70,7 +70,7 @@ function App() {
             <span className="text-sm">Nova versão disponível!</span>
             <button
               onClick={updateServiceWorker}
-              className="bg-white text-yellow-600 px-3 py-1 rounded text-sm font-medium hover:bg-gray-100"
+              className="bg-white text-black px-3 py-1 rounded text-sm font-medium hover:bg-gray-100"
             >
               Atualizar
             </button>
